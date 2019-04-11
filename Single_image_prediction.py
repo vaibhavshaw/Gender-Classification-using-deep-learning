@@ -1,6 +1,6 @@
-# Convolutional Neural Network
 
 
+# Requirements
 
 # Installing numpy
 # pip install numpy
