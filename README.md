@@ -1,2 +1,4 @@
-# Gender_Classification-using-deep-learning
+# Gender Classification using deep learning
+
+Tools and Technologies : Numpy, Matplotlib, Keras, Tensorflow(back-end)
 
