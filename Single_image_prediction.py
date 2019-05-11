@@ -31,9 +31,9 @@ from keras.preprocessing import image
 
 # CHANGE THE IMAGE_NAME WITH YOUR'S IMAGE
 
-test_image_1 = image.load_img('dataset/predict_image/image_name_1.jpg', target_size = (64, 64))
+test_image_1 = image.load_img('dataset/predict_image/male_female1.jpg', target_size = (64, 64))
 
-test_image_2 = image.load_img('dataset/predict_image/image_name_2.jpg', target_size = (64, 64))
+test_image_2 = image.load_img('dataset/predict_image/male_female2.jpg', target_size = (64, 64))
 
 # Converting image to array of pixels
 
