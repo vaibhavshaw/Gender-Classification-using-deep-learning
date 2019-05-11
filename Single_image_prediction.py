@@ -31,23 +31,30 @@ from keras.preprocessing import image
 
 # CHANGE THE IMAGE_NAME WITH YOUR'S IMAGE
 
-test_image = image.load_img('dataset/predict_image/image_name.jpg', target_size = (64, 64))
+test_image_1 = image.load_img('dataset/predict_image/image_name_1.jpg', target_size = (64, 64))
+
+test_image_2 = image.load_img('dataset/predict_image/image_name_2.jpg', target_size = (64, 64))
 
 # Converting image to array of pixels
 
-test_image = image.img_to_array(test_image)
+test_image_1 = image.img_to_array(test_image_1)
+
+test_image_2 = image.img_to_array(test_image_2)
+
 
 # Expanding dimension
 
-test_image = np.expand_dims(test_image, axis = 0)
+test_image_1 = np.expand_dims(test_image_1, axis = 0)
+
+test_image_2 = np.expand_dims(test_image_2, axis = 0)
 
 # Predict the image
 
-result = classifier.predict(test_image)
+result = classifier.predict(test_image_1)
 
 # Checking the prediction
 
-training_set.class_indices
+print(training_set.class_indices)
 
 
 if result[0][0] == 1:
@@ -55,3 +62,19 @@ if result[0][0] == 1:
     
 else:
     prediction = 'female'
+  
+  
+print(result)  
+
+# Predict the image
+
+result = classifier.predict(test_image_2)
+
+if result[0][0] == 1:
+    prediction = 'male'
+    
+else:
+    prediction = 'female'
+  
+
+print(result)  
