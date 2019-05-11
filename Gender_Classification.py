@@ -21,35 +21,52 @@ from keras.layers import Dropout
 
 # Initialising the CNN
 classifier = Sequential()
-
+    
 # Adding first Convolution layer
-classifier.add(Conv2D(32, (3, 3), input_shape = (64, 64, 3), activation = 'relu'))
+classifier.add(Conv2D(32, (3, 3), padding = "same", input_shape = (64, 64, 3), activation = 'relu'))
+    
+# Pooling
+classifier.add(MaxPooling2D(pool_size = (2, 2)))
+    
+# Adding second convolutional layer
+classifier.add(Conv2D(32, (3, 3), padding = "same", activation = 'relu'))
+    
+# Pooling
+classifier.add(MaxPooling2D(pool_size = (2, 2)))
+
+# Adding third convolutional layer
+classifier.add(Conv2D(32, (3, 3), padding = "same", activation='relu'))
 
 # Pooling
 classifier.add(MaxPooling2D(pool_size = (2, 2)))
 
-# Adding a second convolutional layer
-classifier.add(Conv2D(32, (3, 3), activation = 'relu'))
+# Adding fourth convolutional layer
+classifier.add(Conv2D(32, (3, 3), padding = "same", activation='relu'))
 
 # Pooling
 classifier.add(MaxPooling2D(pool_size = (2, 2)))
 
-
+    
 # Flattening
 classifier.add(Flatten())
+    
+# Fully connection layers
+classifier.add(Dense(units = 64, activation = 'relu'))
+    
+# Adding Dropout
+classifier.add(Dropout(0.6))
 
-# Full connection
-classifier.add(Dense(units = 128, activation = 'relu'))
+classifier.add(Dense(units = 64, activation='relu'))
+
+classifier.add(Dense(units = 64, activation='relu'))
 
 # Adding Dropout
-drop_rate = 0.4
-classifier.add(Dropout(drop_rate))
-
+classifier.add(Dropout(0.3))
+    
 # Adding the output layer
 classifier.add(Dense(units = 1, activation = 'sigmoid'))
-
-# Compiling the CNN
-from keras.optimizers import Adam
+    
+# Compiling the CNN    
 optimizer = Adam(lr=1e-3)
 classifier.compile(optimizer = optimizer, loss = 'binary_crossentropy', metrics = ['accuracy'])
 
