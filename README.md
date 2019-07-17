@@ -1,4 +1,4 @@
-# Gender Classification using Deep Learning
+# Gender classification using deep learning
 
 # Convolutional Neural Network
 
